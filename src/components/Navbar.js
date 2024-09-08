@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export class Navbar extends Component {
-  render() {
+render() {
+    const CategoriesArr = ['Home', 'Entertainment', 'Business', 'Health', 'Science', 'Sports', 'Technology'];
     return (
-      <nav className="bg-gray-800 sticky ">
-        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
+      <nav className="bg-gray-800 sticky top-0 z-10">
+        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex flex-shrink-0 items-center">
@@ -13,67 +14,33 @@ export class Navbar extends Component {
                   className="h-8 w-auto"
                   src="https://tse3.mm.bing.net/th?id=OIP.tSfb0ciZD50f_102hUOEXgHaHa&pid=Api&P=0&h=180"
                   alt="Your Company"
-                  style={{ marginRight: "0.6rem" }}
+                  style={{ marginRight: "0.6rem", borderRadius: ".3rem" }}
                 />
               </div>
               <div>
                 <h1
                   style={{
-                    color: "White",
+                    color: "white",
                     marginRight: "2rem",
                     fontSize: "1.5rem",
                     fontFamily: "cursive",
                   }}
                 >
-                  NewsMonkey
+                  ChimpBuzz
                 </h1>
               </div>
-              <div className="hidden sm:ml-6 sm:block">
-                <div className="flex space-x-4">
-                  <Link
-                    to="/"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm"
-                    style={{ fontSize: "1.02rem", fontWeight: "600" }}
-                  >
-                    Home
-                  </Link>
-                  <Link
-                    to="/entertainment"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                  >
-                    Entertainment
-                  </Link>
-                  <Link
-                    to="/business"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                  >
-                    Buisness
-                  </Link>
-                  <Link
-                    to="/health"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                  >
-                    Health
-                  </Link>
-                  <Link
-                    to="/science"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                  >
-                    Science
-                  </Link>
-                  <Link
-                    to="/sports"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                  >
-                    Sports
-                  </Link>
-                  <Link
-                    to="/technology"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                  >
-                    Technology
-                  </Link>
-                </div>
+              <div className="flex space-x-4 mx-24">
+                {CategoriesArr.map((element) => {
+                  return (
+                    <Link
+                      key={element}
+                      to={element === 'Home' ? '/' : `/${element.toLowerCase()}`}
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    >
+                      {element}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">

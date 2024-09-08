@@ -25,12 +25,13 @@ export class News extends Component {
       totalResults: 0,
       loading: false
     }
-    document.title=`${this.props.category.charAt(0).toUpperCase()+this.props.category.slice(1)} News`;
+    document.title=`ChimBuzz - ${this.props.category.charAt(0).toUpperCase()+this.props.category.slice(1)} News`;
   }
 
   
   updatefn= async()=>{
-    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=fd1d2efcc2104b679828354d8f2da5f9&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    const apiKey = process.env.REACT_APP_NEWS_API_KEY; 
+    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({loading:true})
     let data= await fetch(url);
     console.log(data);
@@ -64,7 +65,7 @@ export class News extends Component {
 
   render(){
     return (
-      <div className="container1 my-7 mx-5">
+      <div className="container1 mx-5">
         <h1 className='h1class'>
           {(this.props.category==="general")?"Today's top Headlines":`Today's top ${this.props.category.charAt(0).toUpperCase()+this.props.category.slice(1)} Headlines`}
         </h1>
