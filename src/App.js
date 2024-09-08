@@ -11,7 +11,7 @@ import {
 export default class App extends Component {
   render() {
    const pgSize = 8;
-   const Country= "in";
+   const Country= "us";
     return (
       <div>
       <Router>

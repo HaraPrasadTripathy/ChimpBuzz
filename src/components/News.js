@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 export class News extends Component {
   static defaultProps={
     pageSize: 8,
-    country: "in",
+    country: "us",
     category:"general"
   }
 
@@ -33,6 +33,7 @@ export class News extends Component {
     let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=fd1d2efcc2104b679828354d8f2da5f9&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({loading:true})
     let data= await fetch(url);
+    console.log(data);
     let parsedata= await data.json();
     this.setState({
       articles: parsedata.articles, 
@@ -63,9 +64,9 @@ export class News extends Component {
 
   render(){
     return (
-      <div className="container1 my-7 mx-3">
+      <div className="container1 my-7 mx-5">
         <h1 className='h1class'>
-          {(this.props.category=="general")?"Today's top Headlines":`Today's top ${this.props.category.charAt(0).toUpperCase()+this.props.category.slice(1)} Headlines`}
+          {(this.props.category==="general")?"Today's top Headlines":`Today's top ${this.props.category.charAt(0).toUpperCase()+this.props.category.slice(1)} Headlines`}
         </h1>
         <div className='spinnerClass'>
         {this.state.loading && <LoadingSpinner/>}
@@ -79,7 +80,7 @@ export class News extends Component {
         </div>
         <div className='d-flex justify-content-between my-7'>
             <button disabled={this.state.page<=1} type="button" className="btn btn-success" onClick={this.prevfn} style={{marginLeft:"0.7rem"}}>&larr; Previous</button>
-            <button disabled={Math.ceil(this.state.totalResults/this.props.pageSize)<=this.state.page} type="button" class="btn btn-success" onClick={this.nextfn} style={{marginRight:"0.7rem"}}>Next &rarr;</button>
+            <button disabled={Math.ceil(this.state.totalResults/this.props.pageSize)<=this.state.page} type="button" className="btn btn-success" onClick={this.nextfn} style={{marginRight:"0.7rem"}}>Next &rarr;</button>
         </div>
       </div>
     )

@@ -79,6 +79,7 @@ svg {
     transform: translateY(-20px);
   }
 }
+
 @keyframes load {
   0% {
     stroke-dashoffset: 570;

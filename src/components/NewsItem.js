@@ -11,7 +11,7 @@ export default class NewsItem extends Component {
           <h2 className="card-title">{title}</h2>
           <p className="card-text my-3">{description}</p>
           <p className="card-text my-3" style={{fontFamily:"Georgia, serif"}}>By {!author?"unkown":author} on {new Date(date).toGMTString()}</p>
-          <a href={newsurl} target='_blank' className="btn btn-sm btn-primary">Read More</a>
+          <a href={newsurl} target='_blank' rel="noreferrer" className="btn btn-sm btn-primary">Read More</a>
           </div>
         </div>
       </div>
